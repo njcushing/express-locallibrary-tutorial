@@ -3,7 +3,7 @@ extends layout
 block content
 
   h1 Author: #{author.name}
-  p #{author.date_of_birth} - #{author.date_of_death}
+  p #{author.date_of_birth_formatted || author.date_of_death_formatted ? "(" : null}#{ author.date_of_birth_formatted ? "Born " + author.date_of_birth_formatted : null}#{author.date_of_death_formatted ? author.date_of_birth_formatted ? ", died " + author.date_of_death_formatted : "Died " + author.date_of_death_formatted : null}#{author.date_of_birth_formatted || author.date_of_death_formatted ? ")" : null}
 
   div(style='margin-left:20px;margin-top:20px')
 
