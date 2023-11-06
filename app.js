@@ -22,8 +22,18 @@ var usersRouter = require("./routes/users");
 var catalogRouter = require("./routes/catalog");
 
 const compression = require("compression");
+const helmet = require("helmet");
 
 var app = express();
+
+// Set CSP headers to allow our Bootstrap and Jquery to be served
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+        },
+    })
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
